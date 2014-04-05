@@ -20,30 +20,35 @@ import java.util.Random;
 import processing.core.PApplet;
 
 /**
+ * This thing is so pretty. A row of vaguely transparent circles. I LOVE THIS.
  * @author hparry
  *
  */
 @SuppressWarnings("serial")
-public class GaussianDistribution extends PApplet {
+public class GaussianPaintSpatter extends PApplet {
 
-	float sizeSd = 10;
-	float distanceSd = 20;
 	
 	Random generator;
 	
 	public void setup() {
-		size(640, 360);
+		size(640, 640);
 		generator = new Random();
 	}
 	
 	public void draw() {
-		
 		float num = (float)generator.nextGaussian();
-		float sd = 60;
+		float distanceSd = 10;
+		float sizeSd = 5;
+		float distanceMean = 30;
+		float sizeMean = 30;
 		float mean = 320;
-		float x = sd * num + mean;
+		float xvector = (float) ((Math.floor(Math.random() * 10) % 2 == 0 ? 1 : -1) * Math.random());
+		float yvector = (float) ((Math.floor(Math.random() * 10) % 2 == 0 ? 1 : -1) * Math.random());
+		float x = (distanceSd * num + distanceMean) * xvector + mean;
+		float y = (distanceSd * num + distanceMean) * yvector + mean;
+		float radius = (sizeMean - (sizeSd * num));
 		noStroke();
-		fill(255, 100);
-		ellipse(x, 180, 16, 16);
+		fill(255, 10);
+		ellipse(x, y, radius, radius);
 	}
 }
