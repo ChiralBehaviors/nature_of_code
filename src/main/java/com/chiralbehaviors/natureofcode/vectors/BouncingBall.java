@@ -16,6 +16,7 @@
 package com.chiralbehaviors.natureofcode.vectors;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 
 /**
  * @author hparry
@@ -25,11 +26,8 @@ public class BouncingBall extends PApplet{
 	
 	
 	private static final long serialVersionUID = 7896829425986605795L;
-	float x = 100;
-	float y = 100;
-	
-	float xspeed = 1;
-	float yspeed = (float) 3.3;
+	PVector location = new PVector(100, 100);
+	PVector velocity = new PVector(1, (float) 3.3);
 	
 	public void setup() {
 		size(640, 360);
@@ -39,21 +37,20 @@ public class BouncingBall extends PApplet{
 	public void draw() {
 		background(255);
 		
-		x += xspeed;
-		y += yspeed;
+		location.add(velocity);
 		
-		if ( (x > width) || (x < 0)) {
-			xspeed *= -1;
+		if ( (location.x > width) || (location.x < 0)) {
+			velocity.x *= -1;
 		}
 		
-		if ( (y > height) || (y < 0)) {
-			yspeed *= -1;
+		if ( (location.y > height) || (location.y < 0)) {
+			velocity.y *= -1;
 		}
 		
 		stroke(0);
 		fill(175);
 		
-		ellipse(x, y, 16, 16);
+		ellipse(location.x, location.y, 16, 16);
 	}
 	
 	
