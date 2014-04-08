@@ -20,39 +20,42 @@ import java.util.Random;
 import processing.core.PApplet;
 
 /**
+ * Spatters in 4 rough quandrants.
+ * The x axis is the difference between g and b, so if they're both
+ * really high they'll plot the same as if they're both really low.
  * @author hparry
- *
+ * 
  */
-public class GaussianPalette extends PApplet {
+public class GaussianPalette2 extends PApplet {
 
 	private static final long serialVersionUID = 1L;
 	private int stdDev = 1;
-	private int mean = 127;
-	int radius = 30;
+
+	int radius = 20;
 	private Random generator;
 	int dimension = 800;
-	
+	private int mean = dimension / 2;
 
 	public void setup() {
-		size (dimension, dimension);
+		size(dimension, dimension);
 		background(255);
 		generator = new Random();
 	}
-	
+
 	public void draw() {
-		float r = ((float) generator.nextGaussian() * mean) + stdDev;
-		float g = ((float) generator.nextGaussian() * mean) + stdDev;
-		float b = ((float) generator.nextGaussian() * mean) + stdDev;
-		
+		float r = ((float) (generator.nextGaussian() + 1)/2 * mean) + stdDev;
+		float g = ((float) (generator.nextGaussian() + 1)/2 * mean) + stdDev;
+		float b = ((float) (generator.nextGaussian() + 1)/2 * mean) + stdDev;
+
 		int xoffset = width / 2;
-		int yoffset = height / 2;
-		
+		int yoffset = height / 4;
+
 		noStroke();
-		fill(r, g, b, 50);
+		fill(r, g, b, 100);
 		int x = (int) (g - b + xoffset);
 		int y = (int) (r + yoffset);
 		ellipse(x, y, radius, radius);
-		
+
 	}
 
 }
