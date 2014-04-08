@@ -21,29 +21,31 @@ import processing.core.PApplet;
 
 /**
  * @author hparry
- *
+ * 
  */
-@SuppressWarnings("serial")
-public class GaussianDistribution extends PApplet {
+public class GaussianRainVisualization extends PApplet {
 
-	float sizeSd = 10;
-	float distanceSd = 20;
+	private static final long serialVersionUID = 1L;
+
+	private Random generator;
 	
-	Random generator;
-	
+	private int dimension = 640;
+
 	public void setup() {
-		size(640, 360);
+		size(dimension, dimension);
 		generator = new Random();
 	}
-	
+
 	public void draw() {
-		
-		float num = (float)generator.nextGaussian();
-		float sd = 60;
-		float mean = 320;
-		float x = sd * num + mean;
+		float num = (float) generator.nextGaussian();
+		float sizeSd = 5;
+		float sizeMean = 20;
+		float x = random(dimension);
+		float y = random(dimension);
+		float radius = (sizeMean - (sizeSd * num));
 		noStroke();
-		fill(255, 10);
-		ellipse(x, 180, 16, 16);
+		fill(255, 20);
+		ellipse(x, y, radius, radius);
 	}
+
 }

@@ -37,8 +37,8 @@ public class GaussianPaintSpatter extends PApplet {
 	
 	public void draw() {
 		float num = (float)generator.nextGaussian();
-		float distanceSd = 10;
-		float sizeSd = 5;
+		float distanceSd = 40;
+		float sizeSd = 10;
 		float distanceMean = 30;
 		float sizeMean = 30;
 		float mean = 320;
@@ -48,7 +48,7 @@ public class GaussianPaintSpatter extends PApplet {
 		float y = (distanceSd * num + distanceMean) * yvector + mean;
 		float radius = (sizeMean - (sizeSd * num));
 		noStroke();
-		fill(255, 10);
+		fill(255, 20);
 		ellipse(x, y, radius, radius);
 	}
 }
