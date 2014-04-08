@@ -20,12 +20,12 @@ import java.util.Random;
 import processing.core.PApplet;
 
 /**
- * Spatters down a diagonal center line. 
- * No real blue to be seen, but far fewer outli.
+ * Spatters on a diagonal centerline. Missing most of the blues,
+ * but far fewer outliers than v2.
  * @author hparry
  * 
  */
-public class GaussianPalette2 extends PApplet {
+public class GaussianPalette3 extends PApplet {
 
 	private static final long serialVersionUID = 1L;
 	private int stdDev = 1;
