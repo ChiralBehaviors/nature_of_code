@@ -28,7 +28,7 @@ import processing.core.PApplet;
 public class GaussianPalette4 extends PApplet {
 
 	private static final long serialVersionUID = 1L;
-	private int stdDev = 0;
+	private int stdDev = 100;
 
 	int radius = 15;
 	private Random generator;
@@ -42,9 +42,9 @@ public class GaussianPalette4 extends PApplet {
 	}
 
 	public void draw() {
-		float r = ((float) (generator.nextGaussian() + 1)/2 * mean) + stdDev;
-		float g = ((float) (generator.nextGaussian() + 1)/2 * mean) + stdDev;
-		float b = ((float) (generator.nextGaussian() + 1)/2 * mean) + stdDev;
+		float r = ((float) (generator.nextGaussian()) * stdDev) + mean;
+		float g = ((float) (generator.nextGaussian()) * stdDev) + mean;
+		float b = ((float) (generator.nextGaussian()) * stdDev) + mean;
 
 		int xoffset = width / 2;
 		int yoffset = height / 2;
@@ -52,7 +52,7 @@ public class GaussianPalette4 extends PApplet {
 		noStroke();
 		fill(r, g, b, 100);
 		int x = (int) ((g >= b ? g : b * -1) + xoffset);
-		int y = (int) (r + (g >= b ? g : b * -1) + yoffset);
+		int y = (int) (r + (g >= b ? g : b * -1))/2  + yoffset;
 		ellipse(x, y, radius, radius);
 
 	}
