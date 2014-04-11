@@ -21,9 +21,11 @@ import processing.core.PApplet;
  * @author hparry
  *
  */
+@SuppressWarnings("serial")
 public class Perlin2DNoise extends PApplet {
 	
-	float xoff = 0;
+	int animate = 0;
+	
 	public void setup() {
 		size(640, 360);
 		
@@ -31,16 +33,19 @@ public class Perlin2DNoise extends PApplet {
 	
 	public void draw() {
 		loadPixels();
+		float xoff = 0;
 		for (int x = 0; x < width; x++) {
 			float yoff = 0;
 			for (int y = 0; y < height; y++) {
-				float shade = map(noise(xoff,yoff), 0, 1, 0, 255);
+				float shade = map(noise(xoff,yoff, animate), 0, 1, 0, 255);
 				pixels[x + y*width] = color(shade);
 				yoff += 0.01;
 			}
 			xoff += 0.01;
 		}
 		updatePixels();
+		
+		animate++;
 	}
 
 }
