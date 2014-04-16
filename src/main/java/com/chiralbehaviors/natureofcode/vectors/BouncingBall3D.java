@@ -30,7 +30,7 @@ public class BouncingBall3D extends PApplet {
 	private int depth = 200;
 	
 	public void setup() {
-		size(640, 360);
+		size(640, 360, P3D);
 		background(255);
 	}
 	
@@ -53,8 +53,8 @@ public class BouncingBall3D extends PApplet {
 		
 		stroke(0);
 		fill(175);
-		
-		ellipse(location.x, location.y, 16 - 16/Math.max(((location.z + 1)/20), 1), 16 - 16/Math.max(((location.z + 1)/20), 1));
+		translate(location.x, location.y, location.z);
+		ellipse(0,0, 16, 16);
 	}
 
 }
