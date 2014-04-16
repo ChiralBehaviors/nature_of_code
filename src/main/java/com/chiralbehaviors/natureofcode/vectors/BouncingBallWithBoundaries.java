@@ -25,7 +25,7 @@ import processing.core.PVector;
 @SuppressWarnings("serial")
 public class BouncingBallWithBoundaries extends PApplet{
 	
-	
+	//TODO make this look pretty, damn it
 	
 	PVector location = new PVector(100, 100);
 	PVector velocity = new PVector(1, (float) 3.3);
@@ -49,9 +49,9 @@ public class BouncingBallWithBoundaries extends PApplet{
 		rect(border, border, width - 2*border, height - 2*border);
 		location.add(velocity);
 		
-		if ((location.x + diameter/2  > innerWidth) || (location.x - diameter/2 < border)) {
+		if ((location.x + diameter/2  >= innerWidth) || (location.x - diameter/2 <= border)) {
 			velocity.x *= -1;
-			if (location.x + diameter/2  > innerWidth) {
+			if (location.x + diameter/2  >= innerWidth) {
 				strokeWeight(10);
 				stroke(255, 0, 0);
 				line(innerWidth, border, innerWidth, innerHeight);
@@ -62,9 +62,9 @@ public class BouncingBallWithBoundaries extends PApplet{
 			}
 		}
 		
-		if ( (location.y + diameter/2 > innerHeight) || (location.y - diameter/2 < border)) {
+		if ( (location.y + diameter/2 >= innerHeight) || (location.y - diameter/2 <= border)) {
 			velocity.y *= -1;
-			if (location.y + diameter/2 > innerHeight) {
+			if (location.y + diameter/2 >= innerHeight) {
 				strokeWeight(10);
 				stroke(255, 0, 0);
 				line(border, innerHeight, innerWidth, innerHeight);
